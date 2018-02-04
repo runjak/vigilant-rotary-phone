@@ -13,7 +13,7 @@ describe('mkCond', () => {
     });
 
     it('should return ERROR_COND_ON_SYMBOL given a symbol', () => {
-      const actual = cond(Symbol('wtf'));
+      const actual = cond(Symbol('wtf') as any);
 
       expect(actual).toBe(ERROR_COND_ON_SYMBOL);
     });

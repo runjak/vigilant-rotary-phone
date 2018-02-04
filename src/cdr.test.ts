@@ -17,7 +17,7 @@ describe('cdr', () => {
     cases.forEach((c) => {
       const { given, expected } = c;
 
-      expect(cdr(given)).toEqual(expected);
+      expect(cdr(given as any)).toEqual(expected);
     });
   });
 });
