@@ -6,10 +6,29 @@
   "author": "Jakob Runge <sicarius@g4t3.de>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^22.1.1",
+    "jest": "^22.1.4",
+    "ts-jest": "^22.0.3",
     "typescript": "^2.7.1"
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc",
-    "watch": "./node_modules/.bin/tsc --watch"
+    "build:watch": "./node_modules/.bin/tsc --watch",
+    "test": "./node_modules/.bin/jest",
+    "test:watch": "./node_modules/.bin/jest --watch"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "src/.*(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
