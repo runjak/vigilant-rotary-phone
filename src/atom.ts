@@ -1,4 +1,4 @@
-import { Expression } from './index';
+import { Expression } from './types';
 
 const t = Symbol.for('t');
 

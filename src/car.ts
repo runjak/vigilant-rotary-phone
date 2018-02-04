@@ -1,4 +1,4 @@
-import { Expression } from './index';
+import { Expression } from './types';
 
 export const ERROR_CAR_OF_SYMBOL = Symbol.for('ERROR_CAR_OF_SYMBOL');
 export const ERROR_CAR_OF_EMPTY_LIST = Symbol.for('ERROR_CAR_OF_EMPTY_LIST');
