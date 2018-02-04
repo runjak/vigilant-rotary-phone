@@ -3,11 +3,11 @@ import { Expression } from './index';
 export const ERROR_NO_CONS_FOR_SYMBOL = Symbol.for('ERROR_NO_CONS_FOR_SYMBOL');
 
 const cons = (x: Expression, xs: Expression): Expression => {
-  if(xs instanceof Symbol) {
+  if(typeof xs === 'symbol') {
     return ERROR_NO_CONS_FOR_SYMBOL;
   }
 
-  return [x, ...xs];
+  return [x, ...xs as Array<Expression>];
 }
 
 export default cons;
