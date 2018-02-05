@@ -1,7 +1,7 @@
 import zipWith from 'lodash/zipWith';
 
 import { Expression, EvalFunction } from './types';
-import replace from './replace';
+import { partialSubst } from './subst';
 
 export type LambdaFunction = (parameters: Array<Symbol>, expression: Expression, inputs: Array<Expression>) => Expression;
 
@@ -15,7 +15,7 @@ const mkLambda = (evaluate: EvalFunction): LambdaFunction => {
           return x => x;
         }
 
-        return replace(parameter, evaluate(input));
+        return partialSubst(evaluate(input), parameter);
       },
     );
 
