@@ -40,5 +40,12 @@ describe('subst', () => {
 
       expect(actual).toEqual(substitutedData);
     });
+
+    it('should not replace inside replacement', () => {
+      const actual = subst([a, a], a, [a]);
+      const expected = [[a, a]];
+
+      expect(actual).toEqual(expected);
+    });
   });
 });
