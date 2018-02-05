@@ -1,7 +1,7 @@
 import { EvalFunction } from './types';
-import mkCxr, { cxrRegex } from './cxr';
+import mkCxr, { cxrRegex } from './mkCxr';
 
-describe('cxr', () => {
+describe('mkCxr', () => {
   describe('cxrRegex', () => {
     it('should match given examples', () => {
       const examples = [
@@ -63,7 +63,7 @@ describe('cxr', () => {
     });
   });
 
-  describe('mkCxr', () => {
+  describe('mkCxr()', () => {
     const a = Symbol.for('a');
     const b = Symbol.for('b');
     const c = Symbol.for('c');
