@@ -1,5 +1,5 @@
 import definition from './not';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 describe('not.', () => {
   it('should return () for a truthy input', () => {

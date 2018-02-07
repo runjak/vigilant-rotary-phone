@@ -1,5 +1,5 @@
 import definition from './null';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 describe('null.', () => {
   it('should evaluate to () for an atom', () => {

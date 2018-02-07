@@ -1,5 +1,5 @@
 import definition from './asssoc';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 describe('assoc.', () => {
   it('should lookup an element from a list of pairs', () => {

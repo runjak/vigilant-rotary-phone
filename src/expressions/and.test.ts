@@ -1,5 +1,5 @@
 import definition from './and';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 describe('and.', () => {
   it('should evaluate to t if both are truthy', () => {

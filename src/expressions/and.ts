@@ -1,5 +1,5 @@
 import { ExpressionDefinition } from './types';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 export default {
   'and.': astToExpression([

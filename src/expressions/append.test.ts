@@ -1,5 +1,5 @@
 import definition from './append';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 describe('append.', () => {
   it('should append two lists', () => {

@@ -1,5 +1,5 @@
 import definition from './pair';
-import astToExpression from '../parser/astToExpression';
+import astToExpression from '../parse/astToExpression';
 
 describe('pair.', () => {
   it('should correctly pair two lists', () => {
