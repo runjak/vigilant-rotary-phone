@@ -1,8 +1,9 @@
+import parse from './parse';
 import mkLambda from './mkLambda';
 
 describe('mkLambda', () => {
-  const parameters = ['a','b','c'].map(Symbol.for);
-  const inputs = ['x','y','z'].map(Symbol.for);
+  const parameters = parse('(a b c)');
+  const inputs = parse('(x y z)');
   const [a,b,c] = parameters;
   const [x,y,z] = inputs;
 
@@ -18,18 +19,18 @@ describe('mkLambda', () => {
     });
 
     it('should replace all parameters', () => {
-      const testData = [[],[a,[b,a],c],[b]];
+      const testData = parse('(() (a (b a) c) (b))');
 
-      const expected = [[],[x,[y,x],z],[y]];
+      const expected = parse('(() (x (y x) z) (y))');
       const actual = lambda(parameters, testData, inputs);
 
       expect(actual).toEqual(expected);
     });
 
     it('should work if more inputs than parameters are given', () => {
-      const testData = [[],[a,[b,a],c],[b]];
+      const testData = parse('(() (a (b a) c) (b))');
 
-      const expected = [[],[x,[y,x],z],[y]];
+      const expected = parse('(() (x (y x) z) (y))');
       const actual = lambda(
         parameters,
         testData,
@@ -40,9 +41,9 @@ describe('mkLambda', () => {
     });
 
     it('should leave parameters without inputs in place', () => {
-      const testData = [[],[a,[b,a],c],[b]];
+      const testData = parse('(() (a (b a) c) (b))');
 
-      const expected = [[],[x,[y,x],c],[y]];
+      const expected = parse('(() (x (y x) c) (y))');
       const actual = lambda(parameters, testData, [x,y]);
 
       expect(actual).toEqual(expected);
@@ -58,12 +59,12 @@ describe('mkLambda', () => {
         return x;
       })
 
-      const testData = [[],[a,[b,a],c],[b]];
+      const testData = parse('(() (a (b a) c) (b))');
 
-      const expected = [
-        x, y, z,
-        [[],[x,[y,x],z],[y]],
-      ];
+      const expected = parse(`(
+        x y z
+        (() (x (y x) z) (y))
+      )`);
       lambda(parameters, testData, inputs);
 
       expect(evalLog).toEqual(expected);

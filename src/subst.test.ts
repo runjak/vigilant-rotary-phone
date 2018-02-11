@@ -1,20 +1,17 @@
+import parse from './parse';
 import subst, { partialSubst } from './subst';
 
 describe('subst', () => {
-  const a = Symbol.for('a');
-  const b = Symbol.for('b');
-  const c = Symbol.for('c');
+  const [a, b, c] = parse('(a b c)');
 
-  const testData = [
-    a, c,
-    [],
-    [b, a, [c, a, c]],
-  ];
-  const substitutedData = [
-    b, c,
-    [],
-    [b, b, [c, b, c]],
-  ];
+  const testData = parse(`(
+    a c ()
+    (b a (c a c))
+  )`);
+  const substitutedData = parse(`(
+    b c ()
+    (b b (c b c))
+  )`);
 
   describe('partialSubst()', () => {
     const replacer = partialSubst(b, a);
