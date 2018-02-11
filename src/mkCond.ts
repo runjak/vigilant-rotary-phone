@@ -1,4 +1,4 @@
-import { Expression, EvalFunction } from '../types';
+import { Expression, EvalFunction } from './types';
 
 export const ERROR_COND_ON_SYMBOL = Symbol.for('ERROR_COND_ON_SYMBOL');
 
