@@ -1,5 +1,5 @@
 import definition from './and';
-import parse from '../parse/index';
+import parse from '../parse';
 
 describe('and.', () => {
   it('should evaluate to t if both are truthy', () => {

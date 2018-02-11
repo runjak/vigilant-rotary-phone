@@ -1,5 +1,5 @@
 import definition from './null';
-import parse from '../parse/index';
+import parse from '../parse';
 
 describe('null.', () => {
   it('should evaluate to () for an atom', () => {

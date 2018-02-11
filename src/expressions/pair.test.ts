@@ -1,5 +1,5 @@
 import definition from './pair';
-import parse from '../parse/index';
+import parse from '../parse';
 
 describe('pair.', () => {
   it('should correctly pair two lists', () => {

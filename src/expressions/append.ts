@@ -1,5 +1,5 @@
 import { ExpressionDefinition } from './types';
-import parse from '../parse/index';
+import parse from '../parse';
 
 export default {
   'append.': parse(`

@@ -1,5 +1,5 @@
 import definition from './asssoc';
-import parse from '../parse/index';
+import parse from '../parse';
 
 describe('assoc.', () => {
   it('should lookup an element from a list of pairs', () => {

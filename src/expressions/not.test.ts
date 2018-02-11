@@ -1,5 +1,5 @@
 import definition from './not';
-import parse from '../parse/index';
+import parse from '../parse';
 
 describe('not.', () => {
   it('should return () for a truthy input', () => {

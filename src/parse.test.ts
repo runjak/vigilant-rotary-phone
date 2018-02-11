@@ -1,4 +1,4 @@
-import parse from './index';
+import parse from './parse';
 
 describe('parse', () => {
   const quote = Symbol.for('quote');

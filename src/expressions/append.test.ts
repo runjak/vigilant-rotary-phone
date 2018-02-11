@@ -1,5 +1,5 @@
 import definition from './append';
-import parse from '../parse/index';
+import parse from '../parse';
 
 describe('append.', () => {
   it('should append two lists', () => {
