@@ -13,7 +13,7 @@ Quote "quote"
   = "'" xs:Expression { return [Symbol.for('quote'), xs] }
 
 Symbol "symbol"
-  = _ xs:[a-zA-Z\.]+ _ { return Symbol.for(xs.join('')); }
+  = _ xs:[^ \\t\\n\\r()]+ _ { return Symbol.for(xs.join('')); }
 
 _ "whitespace"
   = [ \\t\\n\\r]*
