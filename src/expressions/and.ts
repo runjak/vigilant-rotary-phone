@@ -13,6 +13,5 @@ export default {
           ))
           ('t '()))
       )
-
-    `),
+  `),
 } as ExpressionDefinition;
