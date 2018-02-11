@@ -1,4 +1,4 @@
-import parse from './parse';
+import parse from '../parse';
 import subst, { partialSubst } from './subst';
 
 describe('subst', () => {

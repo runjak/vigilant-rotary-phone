@@ -1,5 +1,5 @@
 import { Expression, EvalFunction } from './types';
-import subst from './subst';
+import subst from './primitives/subst';
 
 export type LabelFunction = (
   identifier: Symbol,

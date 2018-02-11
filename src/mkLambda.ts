@@ -1,7 +1,7 @@
 import zipWith from 'lodash/zipWith';
 
 import { Expression, EvalFunction } from './types';
-import { partialSubst } from './subst';
+import { partialSubst } from './primitives/subst';
 
 export type LambdaFunction = (parameters: Array<Symbol>, expression: Expression, inputs: Array<Expression>) => Expression;
 

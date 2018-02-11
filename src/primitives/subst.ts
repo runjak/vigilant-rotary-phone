@@ -1,4 +1,4 @@
-import { Expression, EvalFunction } from './types';
+import { Expression, EvalFunction } from '../types';
 
 export type SubstFunction = EvalFunction;
 
