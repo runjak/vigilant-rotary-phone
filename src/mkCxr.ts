@@ -1,6 +1,6 @@
 import { Expression, EvalFunction } from './types';
-import car from './car';
-import cdr from './cdr';
+import car from './primitives/car';
+import cdr from './primitives/cdr';
 
 export const cxrRegex = /^c([ad]+)r$/;
 

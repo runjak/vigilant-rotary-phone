@@ -1,4 +1,4 @@
-import { Expression } from './types';
+import { Expression } from '../types';
 
 const quote = (e: Expression): Expression => e;
 

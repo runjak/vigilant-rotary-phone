@@ -1,4 +1,4 @@
-import { Expression } from './types';
+import { Expression } from '../types';
 
 export const ERROR_NO_CDR_FOR_SYMBOL = Symbol.for('ERROR_NO_CDR_FOR_SYMBOL');
 
