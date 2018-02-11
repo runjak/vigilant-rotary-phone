@@ -1,18 +1,18 @@
 import definition from './asssoc';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 describe('assoc.', () => {
   it('should lookup an element from a list of pairs', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'assoc.', ['qoute', 'x'],
-        [
-          [['quote', 'y'], ['quote', 'b']],
-          [['quote', 'x'], ['quote', 'a']],
-          [['quote', 'z'], ['quote', 'c']],
-        ],
-      ]),
+      parse(`(assoc.
+        'x
+        (
+          ('y 'b)
+          ('x 'a)
+          ('z 'c)
+        )
+      )`),
     ];
 
     const expected = Symbol.for('a');
@@ -21,14 +21,14 @@ describe('assoc.', () => {
   it('should lookup the first element from a list of pairs', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'assoc.', ['qoute', 'x'],
-        [
-          [['quote', 'x'], ['quote', 'new']],
-          [['quote', 'x'], ['quote', 'a']],
-          [['quote', 'y'], ['quote', 'b']],
-        ],
-      ]),
+      parse(`(assoc.
+        'x
+        (
+          ('x 'new)
+          ('x 'a)
+          ('y 'b)
+        )
+      )`),
     ];
 
     const expected = Symbol.for('new');

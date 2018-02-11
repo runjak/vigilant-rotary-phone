@@ -1,14 +1,11 @@
 import definition from './not';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 describe('not.', () => {
   it('should return () for a truthy input', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'not.',
-        ['eq', ['quote', 'a'], ['quote', 'a']],
-      ]),
+      parse(`(not. (eq 'a 'a))`),
     ];
 
     const expected = [];
@@ -17,10 +14,7 @@ describe('not.', () => {
   it('should return t for a falsy input', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'not.',
-        ['eq', ['quote', 'a'], ['quote', 'b']],
-      ]),
+      parse(`(not. (eq 'a 'b))`),
     ];
 
     const expected = Symbol.for('t');

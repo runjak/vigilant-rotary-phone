@@ -1,15 +1,14 @@
 import definition from './and';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 describe('and.', () => {
   it('should evaluate to t if both are truthy', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'and.',
-        ['atom', ['quote', 'a']],
-        ['eq', ['quote', 'a'], ['quote', 'a']],
-      ]),
+      parse(`(and.
+        (atom 'a)
+        (eq 'a 'a)
+      )`),
     ];
 
     const expected = Symbol.for('t');
@@ -18,11 +17,10 @@ describe('and.', () => {
   it('should evaluate to () if one is falsy', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'and.',
-        ['atom', ['quote', 'a']],
-        ['eq', ['quote', 'a'], ['quote', 'b']],
-      ]),
+      parse(`(and.
+        (atom 'a)
+        (eq 'a 'b)
+      )`),
     ];
 
     const expected = [];

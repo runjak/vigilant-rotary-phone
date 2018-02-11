@@ -1,30 +1,28 @@
 import definition from './append';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 describe('append.', () => {
   it('should append two lists', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'append.',
-        ['quote', ['a', 'b']],
-        ['quote', ['c', 'd']],
-      ]),
+      parse(`(append.
+        '(a b)
+        '(c d)
+      )`),
     ];
 
-    const expected = astToExpression(['a', 'b', 'c', 'd']);
+    const expected = parse(`(a b c d)`);
   });
 
   it('should append to the empty list', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression([
-        'append.',
-        ['quote', []],
-        ['quote', ['c', 'd']],
-      ]),
+      parse(`(append.
+        '()
+        '(c d)
+      )`),
     ];
 
-    const expected = astToExpression(['c', 'd']);
+    const expected = parse(`(c d)`);
   });
 });

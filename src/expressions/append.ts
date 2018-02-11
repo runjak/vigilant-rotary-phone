@@ -1,16 +1,14 @@
 import { ExpressionDefinition } from './types';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 export default {
-  'append.': astToExpression([
-    'defun', 'append.', ['x', 'y'],
-    [
-      'cond',
-      [['null.', 'x'], 'y'],
-      [
-        ['quote', 't'],
-        ['cons', ['car', 'x'], ['append.', ['cdr', 'x'], 'y']],
-      ],
-    ]
-  ]),
+  'append.': parse(`
+    (defun append. (x y)
+      (cond
+        ((null. x) y)
+        ('t (
+          cons (car x) (append. (cdr x) y)
+        ))
+      )
+    )`),
 } as ExpressionDefinition;

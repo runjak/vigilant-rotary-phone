@@ -1,11 +1,11 @@
 import definition from './null';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 describe('null.', () => {
   it('should evaluate to () for an atom', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression(['null.', ['quote', 'a']]),
+      parse(`(null. 'a)`),
     ];
 
     const expected = [];
@@ -14,7 +14,7 @@ describe('null.', () => {
   it('should evaluate to t given () list', () => {
     const test = [
       ...Object.values(definition),
-      astToExpression(['null.', ['quote', []]]),
+      parse(`(null. '())`),
     ];
 
     const expected = Symbol.for('t');

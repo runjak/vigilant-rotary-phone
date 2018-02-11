@@ -1,13 +1,12 @@
 import { ExpressionDefinition } from './types';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 export default {
-  'assoc.': astToExpression([
-    'defun', 'assoc.', ['x', 'y'],
-    [
-      'cond',
-      [['eq', ['caar', 'y'], 'x'], ['cadar', 'y']],
-      [['quote', 't'], ['assoc.', 'x', ['cdr', 'y']]],
-    ],
-  ]),
+  'assoc.': parse(`(
+    defun assoc. (x y)
+    (cond
+      ((eq (caar y) x) (cadar y))
+      ('t (assoc. x (cdr y)))
+    )
+  )`),
 } as ExpressionDefinition;

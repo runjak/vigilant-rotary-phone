@@ -7,13 +7,13 @@ Expression "S-Expression"
   / Symbol
 
 List "list"
-  = "(" xs:(_ Expression _)* ")" { return xs.map(ys => ys[1]); }
+  = _ "(" xs:(_ Expression _)* ")" _ { return xs.map(ys => ys[1]); }
 
 Quote "quote"
   = "'" xs:Expression { return [Symbol.for('quote'), xs] }
 
 Symbol "symbol"
-  = xs:[a-zA-Z]+ { return Symbol.for(xs.join('')); }
+  = _ xs:[a-zA-Z\.]+ _ { return Symbol.for(xs.join('')); }
 
 _ "whitespace"
   = [ \\t\\n\\r]*

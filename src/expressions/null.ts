@@ -1,9 +1,9 @@
 import { ExpressionDefinition } from './types';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 export default {
-  'null.': astToExpression([
-    'defun', 'null.', ['x'],
-    ['eq', 'x', ['quote', []]],
-  ]),
+  'null.': parse(`(
+    defun null. (x)
+    (eq x '())
+  )`),
 } as ExpressionDefinition;

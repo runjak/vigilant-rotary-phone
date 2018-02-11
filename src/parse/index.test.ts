@@ -56,4 +56,21 @@ describe('parse', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  it('should handle whitespace around symbols', () => {
+    const testData = '\n\tfoo \n\r';
+
+    const expected = foo;
+    const actual = parse(testData);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should handle whitespace around lists', () => {
+    const testData = '\r\n()  \t';
+
+    const actual = parse(testData);
+
+    expect(actual).toEqual([]);
+  });
 });

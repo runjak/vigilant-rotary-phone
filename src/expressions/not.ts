@@ -1,13 +1,12 @@
 import { ExpressionDefinition } from './types';
-import astToExpression from '../parse/astToExpression';
+import parse from '../parse/index';
 
 export default {
-  'not.': astToExpression([
-    'defun', 'not.', ['x'],
-    [
-      'cond',
-      ['x', ['quote', []]],
-      [['quote', 't'], ['quote', 't']],
-    ],
-  ]),
+  'not.': parse(`(
+    defun not. (x)
+    (cond
+      (x '())
+      ('t 't)
+    )
+  )`),
 } as ExpressionDefinition;
