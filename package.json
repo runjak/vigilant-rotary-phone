@@ -8,6 +8,7 @@
   "devDependencies": {
     "@types/jest": "^22.1.1",
     "@types/lodash": "^4.14.100",
+    "@types/pegjs": "^0.10.0",
     "jest": "^22.1.4",
     "ts-jest": "^22.0.3",
     "typescript": "^2.7.1"
@@ -33,6 +34,7 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "pegjs": "^0.10.0"
   }
 }
