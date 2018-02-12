@@ -1,4 +1,4 @@
-import definition from './asssoc';
+import definition from './assoc';
 import parse from '../parse';
 
 describe('assoc.', () => {

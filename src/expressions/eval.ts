@@ -1,6 +1,6 @@
 import { ExpressionDefinition } from '../types';
 import parse from '../parse';
-import assocDefinition from './asssoc';
+import assocDefinition from './assoc';
 import appendDefinition from './append';
 import pairDefinition from './pair';
 import nullDefinition from './null';
