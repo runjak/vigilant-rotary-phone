@@ -1,4 +1,4 @@
-import { ExpressionDefinition } from '../types';
+import { ExpressionDefinitions } from '../types';
 import andDefinition from './and';
 import appendDefinition from './append';
 import assocDefinition from './assoc';
@@ -15,4 +15,4 @@ export default {
   ...notDefinition,
   ...nullDefinition,
   ...pairDefinition,
-} as ExpressionDefinition;
+} as ExpressionDefinitions;

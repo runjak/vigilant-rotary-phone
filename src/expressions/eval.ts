@@ -1,4 +1,4 @@
-import { ExpressionDefinition } from '../types';
+import { ExpressionDefinitions } from '../types';
 import parse from '../parse';
 import assocDefinition from './assoc';
 import appendDefinition from './append';
@@ -68,4 +68,4 @@ export default {
       )
     )
   `),
-} as ExpressionDefinition;
+} as ExpressionDefinitions;

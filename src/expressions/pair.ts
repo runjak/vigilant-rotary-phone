@@ -1,4 +1,4 @@
-import { ExpressionDefinition } from '../types';
+import { ExpressionDefinitions } from '../types';
 import parse from '../parse';
 import andDefinitions from './and';
 
@@ -25,4 +25,4 @@ export default {
           ))
       )
     )`),
-} as ExpressionDefinition;
+} as ExpressionDefinitions;

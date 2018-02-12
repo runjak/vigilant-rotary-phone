@@ -1,4 +1,4 @@
-import { ExpressionDefinition } from '../types';
+import { ExpressionDefinitions } from '../types';
 import parse from '../parse';
 
 export default {
@@ -14,4 +14,4 @@ export default {
           ('t '()))
       )
   `),
-} as ExpressionDefinition;
+} as ExpressionDefinitions;

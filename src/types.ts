@@ -11,7 +11,7 @@ export type FunctionDefinitions = {
   [name: string]: ExpressionFunction,
 };
 
-export type ExpressionDefinition = {
+export type ExpressionDefinitions = {
   [name: string]: Expression,
 };
 
