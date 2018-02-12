@@ -10,3 +10,7 @@ export type FunctionDefinitions = {
 export type ExpressionDefinition = {
   [name: string]: Expression,
 };
+
+export type Scope = {
+  functionDefinitions: FunctionDefinitions,
+};
