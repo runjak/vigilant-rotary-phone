@@ -1,16 +1,14 @@
 export type Expression = Symbol | Cons;
 export interface Cons extends Array<Expression> {};
 
-export type EvalFunction = (e: Expression) => Expression;
+export type EvalFunction = (...expressions: Array<Expression>) => Expression;
 
-export type ExpressionFunction = (...expressions: Array<Expression>) => Expression;
-
-export type LookupResult = ExpressionFunction | Expression | null;
+export type LookupResult = EvalFunction | Expression | null;
 
 export type LookupFunction = (s: symbol) => LookupResult;
 
 export type FunctionDefinitions = {
-  [name: string]: ExpressionFunction,
+  [name: string]: EvalFunction,
 };
 
 export type ExpressionDefinitions = {
