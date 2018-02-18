@@ -73,25 +73,25 @@ describe('mkCxr', () => {
     const testData = [[a, b], [c, d], e];
 
     it('should create a working cadr', () => {
-      const cadr = mkCxr('cadr') as EvalFunction;
+      const cadr = mkCxr(Symbol.for('cadr')) as EvalFunction;
 
       expect(cadr(testData)).toEqual([c, d]);
     });
 
     it('should create a working caddr', () => {
-      const caddr = mkCxr('caddr') as EvalFunction;
+      const caddr = mkCxr(Symbol.for('caddr')) as EvalFunction;
 
       expect(caddr(testData)).toEqual(e);
     });
 
     it('should create a working cdar', () => {
-      const cdar = mkCxr('cdar') as EvalFunction;
+      const cdar = mkCxr(Symbol.for('cdar')) as EvalFunction;
 
       expect(cdar(testData)).toEqual([b]);
     });
 
     it('should not create a zool', () => {
-      const actual = mkCxr('zool');
+      const actual = mkCxr(Symbol.for('zool'));
 
       expect(actual).toBeNull();
     });

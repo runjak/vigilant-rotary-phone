@@ -6,8 +6,10 @@ export const cxrRegex = /^c([ad]+)r$/;
 
 type MaybeEvalFunction = EvalFunction | null;
 
-const mkCxr = (name: string): MaybeEvalFunction => {
-  const [_, xParts] = Array.from(cxrRegex.exec(name) || []);
+const mkCxr = (name: symbol): MaybeEvalFunction => {
+  const [_, xParts] = Array.from(
+    cxrRegex.exec(Symbol.keyFor(name) || '') || [],
+  );
 
   if(xParts === undefined) {
     return null;

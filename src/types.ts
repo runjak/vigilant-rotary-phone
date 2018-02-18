@@ -7,6 +7,8 @@ export type LookupResult = EvalFunction | Expression | null;
 
 export type LookupFunction = (s: symbol) => LookupResult;
 
+export type EvalFunctionGenerator = (s: Symbol) => EvalFunction | null;
+
 export type FunctionDefinitions = {
   [name: string]: EvalFunction,
 };
@@ -18,4 +20,5 @@ export type ExpressionDefinitions = {
 export type Scope = {
   functionDefinitions: FunctionDefinitions,
   expressionDefinitions: ExpressionDefinitions,
+  evalFunctionGenerators: Array<EvalFunctionGenerator>,
 };
