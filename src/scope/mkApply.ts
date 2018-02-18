@@ -14,7 +14,7 @@ const mkApply = (lookup: LookupFunction): EvalFunction => (
     const [x = Symbol.for(''), ...xs] = e as Array<Expression>;
     const f = lookup(x as symbol);
 
-    if (f) {
+    if (typeof f === 'function') {
       return f(...xs);
     }
 
