@@ -20,6 +20,15 @@ const mkLookup = (scope: Scope): LookupFunction => (
       return scope.expressionDefinitions[key];
     }
 
+    const [generatedFunction = null] = scope.evalFunctionGenerators
+      .map(generator => generator(s))
+      .filter(f => f !== null);
+
+    if (generatedFunction !== null) {
+      return generatedFunction;
+    }
+
+
     return null;
   }
 );
