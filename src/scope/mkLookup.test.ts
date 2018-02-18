@@ -25,6 +25,14 @@ describe('mkLookup', () => {
     });
   });
 
+  it('should lookup expressionDefinitions', () => {
+    const { expressionDefinitions } = defaultScope;
+
+    map(expressionDefinitions, (expression, key) => {
+      expect(lookup(Symbol.for(key))).toBe(expression);
+    })
+  });
+
   it('should return null for unknown symbols', () => {
     expect(lookup(Symbol.for('zalgo'))).toBeNull();
   });

@@ -5,7 +5,9 @@ export type EvalFunction = (e: Expression) => Expression;
 
 export type ExpressionFunction = (...expressions: Array<Expression>) => Expression;
 
-export type LookupFunction = (s: symbol) => ExpressionFunction | null;
+export type LookupResult = ExpressionFunction | Expression | null;
+
+export type LookupFunction = (s: symbol) => LookupResult;
 
 export type FunctionDefinitions = {
   [name: string]: ExpressionFunction,
@@ -17,4 +19,5 @@ export type ExpressionDefinitions = {
 
 export type Scope = {
   functionDefinitions: FunctionDefinitions,
+  expressionDefinitions: ExpressionDefinitions,
 };

@@ -1,11 +1,11 @@
 import {
   Scope,
-  ExpressionFunction,
   LookupFunction,
+  LookupResult,
 } from '../types';
 
 const mkLookup = (scope: Scope): LookupFunction => (
-  (s: symbol): ExpressionFunction | null => {
+  (s: symbol): LookupResult => {
     const key = Symbol.keyFor(s) as string;
 
     if (!key) {
@@ -14,6 +14,10 @@ const mkLookup = (scope: Scope): LookupFunction => (
 
     if (key in scope.functionDefinitions) {
       return scope.functionDefinitions[key];
+    }
+
+    if (key in scope.expressionDefinitions) {
+      return scope.expressionDefinitions[key];
     }
 
     return null;
