@@ -28,7 +28,6 @@ const mkLookup = (scope: Scope): LookupFunction => (
       return generatedFunction;
     }
 
-
     return null;
   }
 );
