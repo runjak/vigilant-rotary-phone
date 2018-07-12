@@ -2,11 +2,9 @@ import { Expression, EvalFunction } from './types';
 
 export const ERROR_COND_ON_SYMBOL = Symbol.for('ERROR_COND_ON_SYMBOL');
 
-export type CondFunction = (...es: Array<Expression>) => Expression;
-
 const t = Symbol.for('t');
 
-const mkCond = (evaluate: EvalFunction): CondFunction => {
+const mkCond = (evaluate: EvalFunction): EvalFunction => {
   const cond = (...es: Array<Expression>): Expression => {
     if(es.length === 0) {
       return es;
