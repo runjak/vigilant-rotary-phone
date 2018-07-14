@@ -28,12 +28,22 @@ describe('evaluation', () => {
     expect(actual).toBe(Symbol.for('y'));
   });
 
-  // it('should evaluate lambda expressions', () => {
-  //   expect(true).toBe(false);
-  // });
+  it('should evaluate lambda expressions', () => {
+    const tExp = parse('(lambda (x y) (eq x y) (a a))');
+    const fExp = parse('(lambda (x y) (eq x y) (a b))');
+
+    expect(evaluate(tExp)).toBe(Symbol.for('t'));
+    expect(evaluate(fExp)).toEqual([]);
+  });
 
   // it('should evaluate defun expressions', () => {
-  //   expect(true).toBe(false);
+  //   const exp = parse(`(
+  //     (defun foo (x y) (eq x y))
+  //     (foo a a)
+  //   )`);
+  //   const actual = evaluate(exp);
+
+  //   expect(actual).toBe(Symbol.for('t'));
   // });
 
   // it('should evaluate a parsed expression', () => {

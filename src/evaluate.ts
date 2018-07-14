@@ -19,9 +19,8 @@ const evaluate = yCombinator(
           ...defaultScope.functionDefinitions,
           label: mkLabel(self) as EvalFunction,
           cond: mkCond(self),
-          // FIXME figure out how to handle these things
+          lambda: mkLambda(self) as EvalFunction,
           // defun: mkDefun(self),
-          // lambda: mkLambda(self),
         },
       };
 
