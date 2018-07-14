@@ -17,6 +17,25 @@ describe('evaluation', () => {
     expect(actual).toBe(Symbol.for('t'));
   });
 
+  it('should evaluate cond expressions', () => {
+    const exp = parse(`(cond
+      ((eq a b) x)
+      ((eq a a) y)
+      ((eq b a) z)
+    )`);
+    const actual = evaluate(exp);
+
+    expect(actual).toBe(Symbol.for('y'));
+  });
+
+  // it('should evaluate lambda expressions', () => {
+  //   expect(true).toBe(false);
+  // });
+
+  // it('should evaluate defun expressions', () => {
+  //   expect(true).toBe(false);
+  // });
+
   // it('should evaluate a parsed expression', () => {
   //   const test = parse('(append. (a b) (c d))');
   //   const expected = parse('(a b c d)');
