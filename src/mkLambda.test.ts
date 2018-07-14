@@ -1,5 +1,6 @@
 import parse from './parse';
 import mkLambda from './mkLambda';
+import { EvalFunction } from './types';
 
 describe('mkLambda', () => {
   const parameters = parse('(a b c)');
@@ -45,6 +46,16 @@ describe('mkLambda', () => {
 
       const expected = parse('(() (x (y x) c) (y))');
       const actual = lambda(parameters, testData, [x,y]);
+
+      expect(actual).toEqual(expected);
+    });
+
+    it('should take deferred inputs in case of missing inputs', () => {
+      const testData = parse('(a b c)');
+      const expected = parse('(x y z)');
+
+      const deferred = lambda(parameters, testData) as EvalFunction;
+      const actual = deferred(...inputs);
 
       expect(actual).toEqual(expected);
     });

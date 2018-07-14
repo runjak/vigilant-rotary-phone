@@ -20,7 +20,7 @@ const evaluate = yCombinator(
           label: mkLabel(self) as EvalFunction,
           cond: mkCond(self),
           lambda: mkLambda(self) as EvalFunction,
-          // defun: mkDefun(self),
+          defun: mkDefun(self) as EvalFunction,
         },
       };
 
