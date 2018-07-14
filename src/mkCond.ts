@@ -1,4 +1,4 @@
-import { Expression, EvalFunction } from './types';
+import { Expression, EvalFunction, Cons } from './types';
 
 export const ERROR_COND_ON_SYMBOL = Symbol.for('ERROR_COND_ON_SYMBOL');
 
@@ -16,7 +16,7 @@ const mkCond = (evaluate: EvalFunction): EvalFunction => {
       return ERROR_COND_ON_SYMBOL;
     }
 
-    const [predicate, action] = e as Array<Expression>;
+    const [predicate, action] = e as Cons;
 
     if(evaluate(predicate) === t) {
       return evaluate(action);

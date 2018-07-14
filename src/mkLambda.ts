@@ -11,7 +11,7 @@ const mkLambda = (evaluate: EvalFunction): LambdaFunction => {
       parameters,
       inputs,
       (parameter: Symbol, input: Expression): EvalFunction => {
-        if(input === undefined) {
+        if (input === undefined) {
           return x => x;
         }
 

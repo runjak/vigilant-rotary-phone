@@ -1,9 +1,9 @@
-export type Expression = Symbol | Cons;
+export type Expression = Symbol | Cons | EvalFunction;
 export interface Cons extends Array<Expression> {};
 
 export type EvalFunction = (...expressions: Array<Expression>) => Expression;
 
-export type LookupResult = EvalFunction | Expression | null;
+export type LookupResult = Expression | null;
 
 export type LookupFunction = (s: symbol) => LookupResult;
 

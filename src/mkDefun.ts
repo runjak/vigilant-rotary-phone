@@ -1,13 +1,13 @@
-import { Expression, EvalFunction } from './types';
+import { Expression, EvalFunction, LookupResult } from './types';
 
 export type DefunFunction = (
   identifier: Symbol,
   parameters: Expression,
   expression: Expression,
-) => Expression;
+) => LookupResult;
 
 const mkDefun = (evaluate: EvalFunction): DefunFunction => (
-  (identifier: Symbol, parameters: Expression, expression: Expression): Expression => (
+  (identifier: Symbol, parameters: Expression, expression: Expression): LookupResult => (
     evaluate([
       Symbol.for('label'),
       identifier,

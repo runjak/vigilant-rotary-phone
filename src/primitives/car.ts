@@ -1,4 +1,4 @@
-import { Expression } from '../types';
+import { Expression, Cons } from '../types';
 
 export const ERROR_CAR_OF_SYMBOL = Symbol.for('ERROR_CAR_OF_SYMBOL');
 export const ERROR_CAR_OF_EMPTY_LIST = Symbol.for('ERROR_CAR_OF_EMPTY_LIST');
@@ -8,7 +8,7 @@ const car = (e: Expression): Expression => {
     return ERROR_CAR_OF_SYMBOL;
   }
 
-  const xs: Array<Expression> = e as Array<Expression>;
+  const xs = e as Cons;
 
   if(xs.length === 0) {
     return ERROR_CAR_OF_EMPTY_LIST;

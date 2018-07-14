@@ -1,12 +1,14 @@
-import { Expression, EvalFunction } from './types';
+import { Expression } from './types';
 import car from './primitives/car';
 import cdr from './primitives/cdr';
 
 export const cxrRegex = /^c([ad]+)r$/;
 
-type MaybeEvalFunction = EvalFunction | null;
 
-const mkCxr = (name: symbol): MaybeEvalFunction => {
+type Accessor = (...expressions: Array<Expression>) => Expression;
+type MaybeAccessor = Accessor | null;
+
+const mkCxr = (name: symbol): MaybeAccessor => {
   const [_, xParts] = Array.from(
     cxrRegex.exec(Symbol.keyFor(name) || '') || [],
   );
@@ -15,7 +17,7 @@ const mkCxr = (name: symbol): MaybeEvalFunction => {
     return null;
   }
 
-  const accessors: Array<MaybeEvalFunction> = Array.from(xParts).map((xPart) => {
+  const accessors: Array<MaybeAccessor> = Array.from(xParts).map((xPart) => {
     switch(xPart) {
       case 'a':
         return car;
@@ -27,7 +29,7 @@ const mkCxr = (name: symbol): MaybeEvalFunction => {
   });
 
   return accessors.reduce(
-    (result: MaybeEvalFunction, accessor: MaybeEvalFunction): MaybeEvalFunction => {
+    (result: MaybeAccessor, accessor: MaybeAccessor): MaybeAccessor => {
       if (result === null) {
         return accessor;
       }

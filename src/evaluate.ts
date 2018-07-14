@@ -1,7 +1,7 @@
 import defaultScope from './scope/default';
 import mkLookup from './scope/mkLookup';
 import mkApply from './scope/mkApply';
-import { Expression, EvalFunction, Scope } from './types';
+import { Expression, EvalFunction } from './types';
 import yCombinator from './yCombinator';
 
 import mkDefun from './mkDefun';
@@ -15,11 +15,14 @@ const evaluate = yCombinator(
     (...expressions: Array<Expression>): Expression => {
       const scope = {
         ...defaultScope,
-        // FIXME figure out how to handle these things
-        // defun: mkDefun(self),
-        // cond: mkCond(self),
-        // label: mkLabel(self),
-        // lambda: mkLambda(self),
+        functionDefinitions: {
+          ...defaultScope.functionDefinitions,
+          label: mkLabel(self) as EvalFunction,
+          // FIXME figure out how to handle these things
+          // defun: mkDefun(self),
+          // cond: mkCond(self),
+          // lambda: mkLambda(self),
+        },
       };
 
       const lookup = mkLookup(scope);

@@ -10,6 +10,13 @@ describe('evaluation', () => {
     expect(evaluate(fExp)).toEqual([]);
   });
 
+  it('should evaluate label expressions', () => {
+    const exp = parse('((label a b) (eq a b))');
+    const actual = evaluate(exp);
+
+    expect(actual).toBe(Symbol.for('t'));
+  });
+
   // it('should evaluate a parsed expression', () => {
   //   const test = parse('(append. (a b) (c d))');
   //   const expected = parse('(a b c d)');

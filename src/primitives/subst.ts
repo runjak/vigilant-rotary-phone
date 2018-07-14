@@ -1,8 +1,8 @@
-import { Expression, EvalFunction } from '../types';
+import { Expression, Cons } from '../types';
 
-export type SubstFunction = EvalFunction;
+type Rewrite = (e: Expression) => Expression;
 
-export const partialSubst = (replacement: Expression, original: Expression): SubstFunction => {
+export const partialSubst = (replacement: Expression, original: Expression): Rewrite => {
   const doSubst = (e: Expression): Expression => {
     if (e === original) {
       return replacement;
@@ -12,7 +12,7 @@ export const partialSubst = (replacement: Expression, original: Expression): Sub
       return e;
     }
 
-    return (e as Array<Expression>).map(doSubst);
+    return (e as Cons).map(doSubst);
   };
 
   return doSubst;
