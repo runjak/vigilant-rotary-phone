@@ -37,13 +37,17 @@ describe('evaluation', () => {
   });
 
   it('should evaluate defun expressions', () => {
-    const exp = parse(`(
+    const tExp = parse(`(
       (defun foo (x y) (eq x y))
       (foo a a)
     )`);
-    const actual = evaluate(exp);
+    const fExp = parse(`(
+      (defun bar (x y) (eq x y))
+      (bar a b)
+    )`);
 
-    expect(actual).toBe(Symbol.for('t'));
+    expect(evaluate(tExp)).toBe(Symbol.for('t'));
+    expect(evaluate(fExp)).toEqual([]);
   });
 
   // it('should evaluate a parsed expression', () => {
